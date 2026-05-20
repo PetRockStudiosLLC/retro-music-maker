@@ -1,0 +1,32 @@
+PixVox Hybrid License (BSL 1.1 + MIT)
+Source Available License
+
+Version: 1.1
+
+Licensor: PixVox Contributors
+
+Software: PixVox (and associated modules)
+
+Change Date: January 1st, 2030
+
+Change License: MIT License (as provided below)
+
+1. License Grant
+The Licensor hereby grants you the right to copy, modify, create derivative works, redistribute, and make non-production use of the Software.
+
+2. Commercial Use Restriction
+Production use of the Software is permitted only for individuals or entities whose total gross revenue (or total funding raised) does not exceed $100,000 USD in the current or previous fiscal year.
+
+Use by any entity exceeding this revenue threshold, or use of the Software to provide a commercial service that exceeds this limit, requires a separate commercial license agreement from the Licensor.
+
+3. Change to Open Source
+On the Change Date specified above, this license will automatically convert to the MIT License for the specific version of the Software released under this agreement.
+
+MIT License (Effective after Change Date)
+Copyright (c) 2026 PixVox Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

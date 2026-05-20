@@ -5,7 +5,7 @@
 ![Rust](https://img.shields.io/badge/Rust-1.70+-orange?logo=rust)
 ![React](https://img.shields.io/badge/React-18+-blue?logo=react)
 ![Tauri](https://img.shields.io/badge/Tauri-2.0-blue?logo=tauri)
-![License](https://img.shields.io/badge/License-MIT-green)
+![License](https://img.shields.io/badge/License-PixVox%20Hybrid-blue)
 
 A node-based retro music creation tool for synthesizing chiptune sounds, applying effects, sequencing melodies, and exporting your creations. Connect audio nodes visually to build complex soundscapes with an intuitive drag-and-drop interface.
 
@@ -386,7 +386,9 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the [PixVox Hybrid License](LICENSE) (BSL 1.1 + MIT).
+
+Production use is restricted to entities with **$100,000 USD or less** in gross revenue/funding. On **January 1st, 2030**, this license converts to MIT.
 
 ## Acknowledgments
 
