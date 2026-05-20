@@ -15,9 +15,14 @@ A node-based retro music creation tool for synthesizing chiptune sounds, applyin
 
 ## Screenshots
 
-<!-- Add screenshots when available -->
-<!-- ![Screenshot 1](docs/screenshot1.png) -->
-<!-- ![Screenshot 2](docs/screenshot2.png) -->
+**Main Interface** - Drag-and-drop node editor with sidebar palette, toolbar, and console
+![Main Interface](screenshots/Screenshot%202026-05-20%20101748.png)
+
+**Preset Example** - Snake Nokia Classic Tune loaded via the Demos menu
+![Preset](screenshots/Screenshot%202026-05-20%20174735.png)
+
+**Node Details** - Hover tooltips show parameter descriptions and values
+![Node Details](screenshots/Screenshot%202026-05-20%20084931.png)
 
 ## Features
 
