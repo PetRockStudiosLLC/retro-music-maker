@@ -689,12 +689,19 @@ function AppContent() {
     }
   }, [tauri, toast]);
 
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (!presetMenuOpen) return;
-    const close = () => setPresetMenuOpen(false);
+    const close = (e: MouseEvent) => {
+      const menu = dropdownRef.current;
+      if (menu && !(menu as any).contains(e.target)) {
+        setPresetMenuOpen(false);
+      }
+    };
     document.addEventListener("mousedown", close);
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
-    return () => { document.removeEventListener("mousedown", close); document.removeEventListener("keydown", (e) => { if (e.key === "Escape") close(); }); };
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") setPresetMenuOpen(false); });
+    return () => { document.removeEventListener("mousedown", close); };
   }, [presetMenuOpen]);
 
   const handleImportGraph = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -859,10 +866,10 @@ function AppContent() {
              <ToolbarButton onClick={() => setPresetMenuOpen(!presetMenuOpen)} tooltip="Load a demo preset graph">Demos ▾</ToolbarButton>
            </div>
           {presetMenuOpen && (() => {
-            const rect = demoBtnRef.current?.getBoundingClientRect();
-            return createPortal(
-              <div style={{
-                position: "fixed", top: rect ? rect.bottom + 4 : 0, left: rect ? rect.left : 0,
+             const rect = demoBtnRef.current?.getBoundingClientRect();
+             return createPortal(
+               <div ref={dropdownRef} style={{
+                 position: "fixed", top: rect ? rect.bottom + 4 : 0, left: rect ? rect.left : 0,
                 background: "#181926", border: "1px solid #3d4060", borderRadius: 4,
                 boxShadow: "0 8px 24px rgba(0,0,0,0.5)", zIndex: 9999, minWidth: 280,
                 padding: "4px 0",
@@ -880,7 +887,7 @@ function AppContent() {
                       {entries.map(([key, preset]) => (
                         <div
                           key={key}
-                          onClick={(e) => { e.stopPropagation(); handleLoadPresetByKey(key); }}
+                          onClick={() => handleLoadPresetByKey(key)}
                           style={{
                             padding: "6px 14px", cursor: "pointer", fontSize: 11,
                             color: "#c0caf5", fontFamily: "'Segoe UI', system-ui, sans-serif",
