@@ -237,6 +237,7 @@ function AppContent() {
   const [exporting, setExporting] = useState(false);
   const [placingNodeType, setPlacingNodeType] = useState<string | null>(null);
   const [presetMenuOpen, setPresetMenuOpen] = useState(false);
+  const demoBtnRef = useRef<HTMLDivElement | null>(null);
   const [hoveredEdge, setHoveredEdge] = useState<string | null>(null);
   const [showTemplateEditor, setShowTemplateEditor] = useState(false);
   const [showScriptEditor, setShowScriptEditor] = useState(false);
@@ -688,6 +689,14 @@ function AppContent() {
     }
   }, [tauri, toast]);
 
+  useEffect(() => {
+    if (!presetMenuOpen) return;
+    const close = () => setPresetMenuOpen(false);
+    document.addEventListener("mousedown", close);
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+    return () => { document.removeEventListener("mousedown", close); document.removeEventListener("keydown", (e) => { if (e.key === "Escape") close(); }); };
+  }, [presetMenuOpen]);
+
   const handleImportGraph = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -846,14 +855,18 @@ function AppContent() {
           {exporting ? "Exporting..." : "Export WAV"}
         </ToolbarButton>
         <div style={{ position: "relative" }}>
-          <ToolbarButton onClick={() => setPresetMenuOpen(!presetMenuOpen)} tooltip="Load a demo preset graph">Demos ▾</ToolbarButton>
-          {presetMenuOpen && createPortal(
-            <div style={{
-              position: "absolute", top: "100%", left: 0, marginTop: 4,
-              background: "#181926", border: "1px solid #3d4060", borderRadius: 4,
-              boxShadow: "0 8px 24px rgba(0,0,0,0.5)", zIndex: 1000, minWidth: 280,
-              padding: "4px 0",
-            }}>
+          <div ref={demoBtnRef} style={{ display: "inline-block" }}>
+             <ToolbarButton onClick={() => setPresetMenuOpen(!presetMenuOpen)} tooltip="Load a demo preset graph">Demos ▾</ToolbarButton>
+           </div>
+          {presetMenuOpen && (() => {
+            const rect = demoBtnRef.current?.getBoundingClientRect();
+            return createPortal(
+              <div style={{
+                position: "fixed", top: rect ? rect.bottom + 4 : 0, left: rect ? rect.left : 0,
+                background: "#181926", border: "1px solid #3d4060", borderRadius: 4,
+                boxShadow: "0 8px 24px rgba(0,0,0,0.5)", zIndex: 9999, minWidth: 280,
+                padding: "4px 0",
+              }}>
               {(() => {
                   const groups: Record<string, Array<[string, any]>> = {};
                   for (const [key, preset] of Object.entries(demoPresets)) {
@@ -867,7 +880,7 @@ function AppContent() {
                       {entries.map(([key, preset]) => (
                         <div
                           key={key}
-                          onClick={() => handleLoadPresetByKey(key)}
+                          onClick={(e) => { e.stopPropagation(); handleLoadPresetByKey(key); }}
                           style={{
                             padding: "6px 14px", cursor: "pointer", fontSize: 11,
                             color: "#c0caf5", fontFamily: "'Segoe UI', system-ui, sans-serif",
@@ -882,9 +895,10 @@ function AppContent() {
                     </div>
                   ));
                 })()}
-            </div>,
+           </div>,
             document.body
           )}
+        )()}
         </div>
 
         <div style={{ width: 1, height: 24, background: "#3d4060", margin: "0 8px" }} />
