@@ -1,0 +1,9 @@
+{
+  "name": "retro-music-maker",
+  "private": true,
+  "version": "3.0.0",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build"
+  }
+}

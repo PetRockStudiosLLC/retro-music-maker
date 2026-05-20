@@ -1,0 +1,204 @@
+{
+  "nodes": [
+    {
+      "id": "notemapper_4",
+      "name": "NoteMapper",
+      "category": "Sequencer",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "port_type": "Audio"
+        }
+      ],
+      "params": {
+        "amplitude": 0.5,
+        "grid": "[76,77;75,76;74,75;74;;;;;69,70;68,69;67,68;66,67;;;;]",
+        "num_steps": 16.0,
+        "bpm": 140.0,
+        "waveform": "square",
+        "display_name": "",
+        "sustain": 0.3,
+        "decay": 0.05,
+        "min_midi": 48.0,
+        "attack": 0.002,
+        "release": 0.05
+      },
+      "position": [
+        -232.87597202047664,
+        639.0660073409523
+      ],
+      "node_kind": "Builtin"
+    },
+    {
+      "id": "notemapper_2",
+      "name": "NoteMapper",
+      "category": "Sequencer",
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "audio",
+          "port_type": "Audio"
+        }
+      ],
+      "params": {
+        "attack": 0.002,
+        "bpm": 140.0,
+        "num_steps": 16.0,
+        "release": 0.05,
+        "display_name": "",
+        "grid": "[77;76;77;76;77;77;77;77;76;77;76;77;76;76;76;76]",
+        "min_midi": 48.0,
+        "amplitude": 0.5,
+        "decay": 0.05,
+        "waveform": "square",
+        "sustain": 0.3
+      },
+      "position": [
+        -218.63716164205192,
+        191.73004795210707
+      ],
+      "node_kind": "Builtin"
+    },
+    {
+      "id": "slotplayer_0",
+      "name": "SlotPlayer",
+      "category": "Sequencer",
+      "inputs": [
+        {
+          "name": "input_0",
+          "port_type": "Audio"
+        },
+        {
+          "name": "input_1",
+          "port_type": "Audio"
+        },
+        {
+          "name": "input_2",
+          "port_type": "Audio"
+        },
+        {
+          "name": "input_3",
+          "port_type": "Audio"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "port_type": "Audio"
+        }
+      ],
+      "params": {
+        "bpm": 120.0,
+        "slot_2_amplitude": 0.3,
+        "slot_2_waveform": "triangle",
+        "slot_2_duration": 1.0,
+        "slot_0_frequency": 261.63,
+        "slot_0_waveform": "sine",
+        "slot_1_waveform": "square",
+        "slot_1_amplitude": 0.3,
+        "slot_2_frequency": 392.0,
+        "num_slots": 4,
+        "slot_0_duration": 1.0,
+        "slot_3_amplitude": 0.3,
+        "slot_1_frequency": 329.63,
+        "slot_1_duration": 3.87,
+        "slot_0_amplitude": 0.3,
+        "slot_3_frequency": 523.25,
+        "slot_3_waveform": "sawtooth",
+        "slot_3_duration": 1.0
+      },
+      "position": [
+        391.1999969482422,
+        250.39999961853027
+      ],
+      "node_kind": "Builtin"
+    },
+    {
+      "id": "triangleosc_3",
+      "name": "TriangleOscillator",
+      "category": "Oscillator",
+      "inputs": [
+        {
+          "name": "frequency",
+          "port_type": "Control"
+        },
+        {
+          "name": "amplitude",
+          "port_type": "Control"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "port_type": "Audio"
+        }
+      ],
+      "params": {
+        "frequency": 440.0,
+        "amplitude": 0.3
+      },
+      "position": [
+        -192.9856152501048,
+        452.18891983787086
+      ],
+      "node_kind": "Builtin"
+    },
+    {
+      "id": "sineosc_1",
+      "name": "SineOscillator",
+      "category": "Oscillator",
+      "inputs": [
+        {
+          "name": "frequency",
+          "port_type": "Control"
+        },
+        {
+          "name": "amplitude",
+          "port_type": "Control"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "audio",
+          "port_type": "Audio"
+        }
+      ],
+      "params": {
+        "frequency": 440.0,
+        "amplitude": 0.3
+      },
+      "position": [
+        -110.65951627233062,
+        4.252377969514114
+      ],
+      "node_kind": "Builtin"
+    }
+  ],
+  "edges": [
+    {
+      "source": "sineosc_1",
+      "source_handle": "audio",
+      "target": "slotplayer_0",
+      "target_handle": "input_0"
+    },
+    {
+      "source": "notemapper_2",
+      "source_handle": "audio",
+      "target": "slotplayer_0",
+      "target_handle": "input_1"
+    },
+    {
+      "source": "triangleosc_3",
+      "source_handle": "audio",
+      "target": "slotplayer_0",
+      "target_handle": "input_2"
+    },
+    {
+      "source": "notemapper_4",
+      "source_handle": "audio",
+      "target": "slotplayer_0",
+      "target_handle": "input_3"
+    }
+  ]
+}

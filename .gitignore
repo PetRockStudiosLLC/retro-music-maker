@@ -1,0 +1,45 @@
+# Build outputs
+target/
+*.tauri/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.whl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tauri
+src-tauri/target/
+src-tauri/icons/*.png
+src-tauri/icons/*.icns
+src-tauri/icons/*.ico
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Config
+config/*.json
+!config/*.example
+
+# Saves
+save_*.json
+
+# Testing
+.pytest_cache/
+*.log
+
+# Custom node storage (per-user, not needed in repo)
+~/.nodetune/

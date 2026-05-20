@@ -1,0 +1,35 @@
+{
+  "productName": "NodeTune",
+  "version": "3.0.0",
+  "identifier": "com.nodetune.music",
+  "build": {
+    "frontendDist": "../frontend/dist",
+    "devUrl": "http://localhost:6004",
+    "beforeDevCommand": "powershell -ExecutionPolicy Bypass -File start-dev.ps1",
+    "beforeBuildCommand": "powershell -ExecutionPolicy Bypass -Command \"cd ../frontend; npm run build\""
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "NodeTune",
+        "width": 1280,
+        "height": 720,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+ 
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ]
+  }
+}

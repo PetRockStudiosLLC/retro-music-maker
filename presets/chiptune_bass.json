@@ -1,0 +1,74 @@
+{
+  "nodes": [
+    {
+      "id": "square_001",
+      "name": "SquareOscillator",
+      "category": "Oscillator",
+      "params": {
+        "frequency": 220.0,
+        "duty": 0.5
+      },
+      "position": [100, 150],
+      "inputs": [],
+      "outputs": [{"name": "audio", "port_type": "audio"}]
+    },
+    {
+      "id": "adsr_001",
+      "name": "ADSREnvelope",
+      "category": "Envelope",
+      "params": {
+        "attack": 0.01,
+        "decay": 0.1,
+        "sustain": 0.6,
+        "release": 0.3
+      },
+      "position": [400, 100],
+      "inputs": [{"name": "audio", "port_type": "audio"}, {"name": "gate", "port_type": "trigger"}],
+      "outputs": [{"name": "envelope", "port_type": "control"}]
+    },
+    {
+      "id": "delay_001",
+      "name": "DelayEffect",
+      "category": "Effects",
+      "params": {
+        "delayTime": 0.3,
+        "feedback": 0.4,
+        "mix": 0.5
+      },
+      "position": [700, 100],
+      "inputs": [{"name": "audio", "port_type": "audio"}],
+      "outputs": [{"name": "audio", "port_type": "audio"}]
+    },
+    {
+      "id": "audio_001",
+      "name": "AudioOutput",
+      "category": "Output",
+      "params": {
+        "volume": 0.8
+      },
+      "position": [1000, 150],
+      "inputs": [{"name": "audio", "port_type": "audio"}],
+      "outputs": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "square_001",
+      "source_handle": "audio",
+      "target": "adsr_001",
+      "target_handle": "audio"
+    },
+    {
+      "source": "adsr_001",
+      "source_handle": "envelope",
+      "target": "delay_001",
+      "target_handle": "audio"
+    },
+    {
+      "source": "delay_001",
+      "source_handle": "audio",
+      "target": "audio_001",
+      "target_handle": "audio"
+    }
+  ]
+}
