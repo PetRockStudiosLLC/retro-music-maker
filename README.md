@@ -122,14 +122,26 @@ npm run dev
 ### Build
 
 ```powershell
-# Production build
-cargo tauri build
+# Install Tauri CLI (once)
+npm install -g @tauri-apps/cli
 
-# Frontend only
+# Build for production (from project root)
+cd src-tauri
+tauri build
+```
+
+**Release outputs** are placed in `src-tauri/target/release/bundle/`:
+- **NSIS Installer** (`bundle/nsis/NodeTune_3.0.0_x64-setup.exe`) — ~2.7MB, recommended for distribution
+- **MSI Installer** (`bundle/msi/NodeTune_3.0.0_x64_en-US.msi`) — standard Windows installer
+
+**Frontend only:**
+```powershell
 cd frontend
 npm run build
+```
 
-# Lint and type-check frontend
+**Lint and type-check:**
+```powershell
 cd frontend
 npm run lint
 npx tsc --noEmit
